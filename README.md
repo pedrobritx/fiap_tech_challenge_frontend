@@ -28,7 +28,7 @@ SPA para a plataforma de blogging educacional EduPost. Interface responsiva, ace
 
 ## Estrutura
 
-```
+```text
 /edupost-frontend
   ├─ src/
   │  ├─ app/
@@ -88,4 +88,3 @@ SPA para a plataforma de blogging educacional EduPost. Interface responsiva, ace
 - Comentários no `PostRead` (feature flag desligado por padrão)
 - i18n (pt-BR/en-US) com react-i18next
 - Modo escuro (tokens prontos)
-
