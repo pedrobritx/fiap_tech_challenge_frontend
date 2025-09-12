@@ -2,6 +2,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
 import { useContext } from 'react';
 import { AuthContext } from '../../auth/AuthContext';
+import { Logo } from '../../Logo';
 
 export function Header() {
   const { state, logout } = useContext(AuthContext);
@@ -16,14 +17,16 @@ export function Header() {
     <header className={`${styles.header} glass`}>
       <div className={`container ${styles.row}`}>
         <Link to="/" className={styles.brand} aria-label="Ir para página inicial">
-          <span className={styles.logo} aria-hidden>🦉</span>
+          <Logo className={styles.logo} width={40} height={40} />
           <span className={styles.title}>EduPost</span>
         </Link>
 
         <nav aria-label="Navegação principal">
           <ul className={styles.navList}>
             <li>
-              <NavLink to="/" className={({ isActive }) => (isActive ? styles.active : '')}>Home</NavLink>
+              <NavLink to="/" className={({ isActive }) => (isActive ? styles.active : '')}>
+                Home
+              </NavLink>
             </li>
             <li>
               <NavLink to="/admin" className={({ isActive }) => (isActive ? styles.active : '')}>
@@ -49,4 +52,3 @@ export function Header() {
     </header>
   );
 }
-
