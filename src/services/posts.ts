@@ -16,5 +16,4 @@ const posts = {
 
 export default posts;
 export { posts };
-// alias for historical imports
 export const postsService = posts;

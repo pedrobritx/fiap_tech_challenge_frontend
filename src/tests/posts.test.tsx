@@ -63,7 +63,6 @@ describe('Posts', () => {
       return Promise.resolve(postsResponse) as any;
     });
 
-    // Seed token to pass PrivateRoute in create page context if needed
     localStorage.setItem('edupost_token', 'fake');
     localStorage.setItem('edupost_user', 'teacher@school');
 
@@ -81,7 +80,6 @@ describe('Posts', () => {
     fireEvent.click(publish);
     expect(await screen.findByRole('alert')).toHaveTextContent(/preencha os campos/i);
 
-    // fill in
     fireEvent.change(screen.getByLabelText(/título/i), { target: { value: 'My Post' } });
     fireEvent.change(screen.getByLabelText(/conteúdo/i), { target: { value: 'Hello' } });
     fireEvent.change(screen.getByLabelText(/autor/i), { target: { value: 'Teacher' } });

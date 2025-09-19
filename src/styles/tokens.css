@@ -2,7 +2,7 @@
   --brand-50: #e9fff6;
   --brand-100: #c9ffe8;
   --brand-300: #76f2bd;
-  --brand-500: #10b981; /* verde coruja principal */
+  --brand-500: #10b981;
   --brand-700: #0a7a58;
   --surface: rgba(255, 255, 255, 0.35);
   --surface-strong: rgba(255, 255, 255, 0.55);
@@ -31,4 +31,3 @@
   border-radius: 12px;
   padding: 0.75rem 1rem;
 }
-

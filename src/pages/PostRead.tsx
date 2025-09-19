@@ -54,11 +54,9 @@ export default function PostRead() {
       {COMMENTS_ENABLED && (
         <section aria-label="Comentários" style={{ marginTop: '2rem' }}>
           <h2>Comentários</h2>
-          {/* Placeholder para futuro componente de comentários */}
           <p style={{ color: 'var(--text-muted)' }}>Em breve.</p>
         </section>
       )}
     </article>
   );
 }
-

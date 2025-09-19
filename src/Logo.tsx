@@ -10,7 +10,6 @@ type Props = {
 };
 
 export function Logo({ width = 40, height = 40, alt = 'EduPost', className, style }: Props) {
-  // Resolve asset at runtime; works with Vite and Vitest
   let src: string | null = null;
   try {
     src = new URL('./assets/edupost-logo.png', import.meta.url).href;

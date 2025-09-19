@@ -16,8 +16,6 @@ export function Loader({ size = 20 }: { size?: number }) {
   );
 }
 
-// keyframes via global style injection for simplicity
 const style = document.createElement('style');
 style.innerHTML = '@keyframes spin{to{transform:rotate(360deg)}}';
 document.head.appendChild(style);
-
