@@ -1,6 +1,6 @@
 # EduPost — Frontend (React + Vite + TypeScript)
 
-SPA para a plataforma de blogging educacional EduPost. Interface responsiva, acessível e com tema glassmorphism em verde coruja. Integra com API Node/REST configurável via variável de ambiente.
+Página para a plataforma de blogging educacional EduPost. Interface responsiva, acessível e com tema glassmorphism em verde coruja. Integra com API Node/REST configurável via variável de ambiente.
 
 ## Requisitos
 

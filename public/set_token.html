@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Set EduPost Test Token</title>
+  </head>
+  <body>
+    <div
+      style="
+        font-family:
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          Roboto,
+          'Helvetica Neue',
+          Arial;
+        padding: 24px;
+      "
+    >
+      <h2>EduPost: set test token</h2>
+      <p>
+        This page will set a test token and user in localStorage and redirect to
+        <code>/admin</code>.
+      </p>
+      <p>Optional: provide <code>?token=...&user=...</code> in the URL to customize values.</p>
+      <button id="doit">Set token and go to admin</button>
+      <pre id="info" style="margin-top: 12px; color: #444"></pre>
+    </div>
+
+    <script>
+      function setTokenAndRedirect() {
+        const params = new URLSearchParams(location.search);
+        const token = params.get('token') || 'fake-token-for-testing';
+        const user = params.get('user') || 'you@example.com';
+        localStorage.setItem('edupost_token', token);
+        localStorage.setItem('edupost_user', user);
+        document.getElementById('info').textContent =
+          `Set edupost_token=${token}\nSet edupost_user=${user}\nRedirecting to /admin...`;
+        setTimeout(() => {
+          location.href = '/admin';
+        }, 700);
+      }
+
+      document.getElementById('doit').addEventListener('click', setTokenAndRedirect);
+
+      // Auto-run on page load (so visiting the URL immediately applies)
+      window.addEventListener('load', () => {
+        setTokenAndRedirect();
+      });
+    </script>
+  </body>
+</html>
