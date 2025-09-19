@@ -41,13 +41,13 @@ export default function PostEdit() {
     e.preventDefault();
     if (!id || !post) return;
     setError(null);
-    if (!post.title.trim() || !post.content.trim() || !post.author.trim()) {
+    if (!post.title.trim() || !post.content.trim()) {
       setError('Preencha os campos obrigatórios.');
       return;
     }
     setSaving(true);
     try {
-      await postsService.update(id, { title: post.title, description: post.description, content: post.content, author: post.author });
+      await postsService.update(id, { title: post.title, content: post.content });
       navigate('/admin');
     } catch (e: any) {
       setError(e.message || 'Erro ao salvar alterações');
@@ -65,8 +65,7 @@ export default function PostEdit() {
       <Card title="Editar Post">
         <form onSubmit={onSubmit}>
           <TextField label="Título" name="title" value={post.title} onChange={(e) => setPost({ ...post, title: e.target.value })} required />
-          <TextField label="Descrição (opcional)" name="description" value={post.description || ''} onChange={(e) => setPost({ ...post, description: e.target.value })} />
-          <TextField label="Autor" name="author" value={post.author} onChange={(e) => setPost({ ...post, author: e.target.value })} required />
+          <TextField label="Autor" name="author" value={post.author} readOnly />
           <TextArea label="Conteúdo (Markdown)" name="content" value={post.content} onChange={(e) => setPost({ ...post, content: e.target.value })} required rows={10} />
           {error && <div role="alert" style={{ color: '#b91c1c', marginBottom: '0.5rem' }}>{error}</div>}
           <Button type="submit" loading={saving}>Salvar</Button>
@@ -75,4 +74,3 @@ export default function PostEdit() {
     </div>
   );
 }
-

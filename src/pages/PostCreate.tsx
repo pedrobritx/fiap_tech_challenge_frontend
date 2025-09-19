@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState } from 'react';
+import { FormEvent, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TextField } from '../components/ui/TextField';
 import { TextArea } from '../components/ui/TextArea';
@@ -10,25 +10,30 @@ import { AuthContext } from '../auth/AuthContext';
 export default function PostCreate() {
   const { state } = useContext(AuthContext);
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
   const [content, setContent] = useState('');
-  const [author, setAuthor] = useState(
-    state.userEmail || localStorage.getItem('edupost_user') || '',
-  );
+  const [author, setAuthor] = useState(state.user?.name || '');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    setAuthor(state.user?.name || '');
+  }, [state.user]);
+
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     setError(null);
-    if (!title.trim() || !content.trim() || !author.trim()) {
+    if (!title.trim() || !content.trim()) {
       setError('Preencha os campos obrigatórios.');
+      return;
+    }
+    if (!state.user?.id) {
+      setError('Sessão expirada. Faça login novamente.');
       return;
     }
     setLoading(true);
     try {
-      await postsService.create({ title, description, content, author });
+      await postsService.create({ title, content, userId: state.user.id });
       navigate('/admin');
     } catch (e: any) {
       setError(e.message || 'Erro ao criar post');
@@ -49,17 +54,10 @@ export default function PostCreate() {
             required
           />
           <TextField
-            label="Descrição (opcional)"
-            name="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <TextField
             label="Autor"
             name="author"
             value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-            required
+            readOnly
           />
           <TextArea
             label="Conteúdo (Markdown)"

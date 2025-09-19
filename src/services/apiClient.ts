@@ -41,14 +41,33 @@ export const apiClient = {
   delete: <T>(path: string, auth = true) => request<T>(path, 'DELETE', undefined, auth)
 };
 
+export type ApiPostListItem = {
+  id: string;
+  titulo: string;
+  autor: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ApiPostDetail = ApiPostListItem & {
+  conteudo: string;
+};
+
+export type ApiLoginResponse = {
+  token: string;
+  usuario: {
+    id: string;
+    nome: string;
+    email: string;
+  };
+};
+
 export type Post = {
   id: string;
   title: string;
   author: string;
-  description?: string;
   content: string;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
 };
-
-export type LoginResponse = { token: string };

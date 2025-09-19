@@ -12,10 +12,9 @@ export function AppShell({ children }: { children: ReactNode }) {
         {children}
         <footer className={styles.footer} aria-label="Rodapé">
           <p>EduPost — aprendizagem em foco • {new Date().getFullYear()}</p>
-          {state.userEmail && <p>Logado como: {state.userEmail}</p>}
+          {state.user && <p>Logado como: {state.user.name} ({state.user.email})</p>}
         </footer>
       </main>
     </div>
   );
 }
-

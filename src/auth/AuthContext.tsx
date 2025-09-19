@@ -1,9 +1,14 @@
 import { ReactNode, createContext, useEffect, useMemo, useReducer } from 'react';
-import { authReducer, initialAuthState, type AuthState } from './authReducer';
+import {
+  authReducer,
+  initialAuthState,
+  type AuthState,
+  type AuthUser,
+} from './authReducer';
 
 export const AuthContext = createContext<{
   state: AuthState;
-  login: (token: string, userEmail: string | null) => void;
+  login: (token: string, user: AuthUser | null) => void;
   logout: () => void;
 }>({
   state: initialAuthState,
@@ -17,7 +22,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const value = useMemo(
     () => ({
       state,
-      login: (token: string, userEmail: string | null) => dispatch({ type: 'LOGIN', token, userEmail }),
+      login: (token: string, user: AuthUser | null) =>
+        dispatch({ type: 'LOGIN', token, user }),
       logout: () => dispatch({ type: 'LOGOUT' })
     }),
     [state]
@@ -31,4 +37,3 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
-

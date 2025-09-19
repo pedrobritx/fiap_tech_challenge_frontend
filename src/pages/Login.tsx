@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../auth/AuthContext';
 import { TextField } from '../components/ui/TextField';
 import { Button } from '../components/ui/Button';
-import { apiClient, type LoginResponse } from '../services/apiClient';
+import { apiClient, type ApiLoginResponse } from '../services/apiClient';
 import { Card } from '../components/ui/Card';
 
 export default function Login() {
@@ -21,8 +21,12 @@ export default function Login() {
     setError(null);
     setLoading(true);
     try {
-      const res = await apiClient.post<LoginResponse>('/auth/login', { email, password }, false);
-      login(res.token, email);
+      const res = await apiClient.post<ApiLoginResponse>('/login', { email, senha: password }, false);
+      login(res.token, {
+        id: res.usuario.id,
+        name: res.usuario.nome,
+        email: res.usuario.email,
+      });
       navigate(from, { replace: true });
     } catch (err: any) {
       setError(err.message || 'Falha ao autenticar');
@@ -46,4 +50,3 @@ export default function Login() {
     </div>
   );
 }
-
