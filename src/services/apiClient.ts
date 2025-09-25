@@ -7,7 +7,7 @@ async function request<T>(path: string, method: HttpMethod, body?: any, auth = t
   const token = localStorage.getItem('edupost_token');
   if (auth && token) headers['Authorization'] = `Bearer ${token}`;
 
-  const res = await fetch(`${BASE_URL}${path}`, {
+  const res = await fetch(`/api${path}`, {
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined
