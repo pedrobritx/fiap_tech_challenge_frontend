@@ -4,7 +4,8 @@ import { TextField } from '../components/ui/TextField';
 import { TextArea } from '../components/ui/TextArea';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
-import { postsService } from '../services/posts';
+import { BackButton } from '../components/ui/BackButton';
+import { postsService } from '../services/adaptivePosts';
 import { AuthContext } from '../auth/AuthContext';
 
 export default function PostCreate() {
@@ -44,6 +45,7 @@ export default function PostCreate() {
 
   return (
     <div className="container" style={{ maxWidth: 800 }}>
+      <BackButton to="/admin" />
       <Card title="Criar Post">
         <form onSubmit={onSubmit} noValidate>
           <TextField
@@ -53,12 +55,7 @@ export default function PostCreate() {
             onChange={(e) => setTitle(e.target.value)}
             required
           />
-          <TextField
-            label="Autor"
-            name="author"
-            value={author}
-            readOnly
-          />
+          <TextField label="Autor" name="author" value={author} readOnly />
           <TextArea
             label="Conteúdo (Markdown)"
             name="content"

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { postsService } from '../services/posts';
+import { postsService } from '../services/adaptivePosts';
 import type { Post } from '../services/apiClient';
 import { Card } from '../components/ui/Card';
 import { TextField } from '../components/ui/TextField';
@@ -45,14 +45,15 @@ export default function Home() {
   const page = Math.min(Math.max(1, pageParam), totalPages);
   const paginated = useMemo(
     () => posts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
-    [posts, page]
+    [posts, page],
   );
 
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const v = e.target.value;
     setParams((prev) => {
       const next = new URLSearchParams(prev);
-      if (v) next.set('q', v); else next.delete('q');
+      if (v) next.set('q', v);
+      else next.delete('q');
       next.delete('page');
       return next;
     });
@@ -84,7 +85,10 @@ export default function Home() {
       )}
 
       {!loading && !error && paginated.length === 0 && (
-        <EmptyState title="Nada por aqui" description="Nenhum post encontrado. Tente outra busca." />
+        <EmptyState
+          title="Nada por aqui"
+          description="Nenhum post encontrado. Tente outra busca."
+        />
       )}
 
       <div style={{ display: 'grid', gap: '1rem' }}>
@@ -92,11 +96,13 @@ export default function Home() {
           <Card
             key={p.id}
             title={p.title}
-            actions={<Link to={`/posts/${p.id}`} className="btn-primary">Ler</Link>}
+            actions={
+              <Link to={`/posts/${p.id}`} className="btn-primary">
+                Ler
+              </Link>
+            }
           >
-            <p style={{ margin: '0 0 0.25rem 0', color: 'var(--text-muted)' }}>
-              por {p.author}
-            </p>
+            <p style={{ margin: '0 0 0.25rem 0', color: 'var(--text-muted)' }}>por {p.author}</p>
             {p.description && <p style={{ margin: 0 }}>{p.description}</p>}
           </Card>
         ))}
@@ -106,7 +112,13 @@ export default function Home() {
         <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: '1rem' }}>
           <Button
             variant="secondary"
-            onClick={() => setParams((prev) => { const n = new URLSearchParams(prev); n.set('page', String(Math.max(1, page - 1))); return n; })}
+            onClick={() =>
+              setParams((prev) => {
+                const n = new URLSearchParams(prev);
+                n.set('page', String(Math.max(1, page - 1)));
+                return n;
+              })
+            }
             disabled={page <= 1}
             aria-label="Página anterior"
           >
@@ -117,7 +129,13 @@ export default function Home() {
           </span>
           <Button
             variant="secondary"
-            onClick={() => setParams((prev) => { const n = new URLSearchParams(prev); n.set('page', String(Math.min(totalPages, page + 1))); return n; })}
+            onClick={() =>
+              setParams((prev) => {
+                const n = new URLSearchParams(prev);
+                n.set('page', String(Math.min(totalPages, page + 1)));
+                return n;
+              })
+            }
             disabled={page >= totalPages}
             aria-label="Próxima página"
           >
@@ -128,4 +146,3 @@ export default function Home() {
     </div>
   );
 }
-

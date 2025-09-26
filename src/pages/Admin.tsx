@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { postsService } from '../services/posts';
+import { postsService } from '../services/adaptivePosts';
 import type { Post } from '../services/apiClient';
 import { Table } from '../components/ui/Table';
 import { Button } from '../components/ui/Button';
@@ -38,14 +38,18 @@ export default function Admin() {
   const columns = [
     { key: 'title', header: 'Título' },
     { key: 'author', header: 'Autor', width: '20%' },
-    { key: 'createdAt', header: 'Criado em', width: '15%' }
+    { key: 'createdAt', header: 'Criado em', width: '15%' },
   ];
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
+      <div
+        style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}
+      >
         <h1 className="page-title">Gerenciar Posts</h1>
-        <Button onClick={() => navigate('/admin/posts/new')} aria-label="Criar novo post">+ Novo</Button>
+        <Button onClick={() => navigate('/admin/posts/new')} aria-label="Criar novo post">
+          + Novo
+        </Button>
       </div>
 
       {loading && (
@@ -54,7 +58,11 @@ export default function Admin() {
         </div>
       )}
 
-      {error && <p role="alert" style={{ color: '#b91c1c' }}>{error}</p>}
+      {error && (
+        <p role="alert" style={{ color: '#b91c1c' }}>
+          {error}
+        </p>
+      )}
 
       {!loading && posts.length === 0 && (
         <EmptyState
@@ -70,10 +78,18 @@ export default function Admin() {
           data={posts.map((p) => ({ ...p, createdAt: formatDate(p.createdAt) }))}
           renderActions={(row) => (
             <div style={{ display: 'flex', gap: 8 }}>
-              <Link to={`/admin/posts/${row.id}/edit`} className="btn-primary" aria-label={`Editar ${row.title}`}>
+              <Link
+                to={`/admin/posts/${row.id}/edit`}
+                className="btn-primary"
+                aria-label={`Editar ${row.title}`}
+              >
                 Editar
               </Link>
-              <Button variant="danger" onClick={() => setToDelete(row as Post)} aria-label={`Excluir ${row.title}`}>
+              <Button
+                variant="danger"
+                onClick={() => setToDelete(row as Post)}
+                aria-label={`Excluir ${row.title}`}
+              >
                 Excluir
               </Button>
             </div>
@@ -84,7 +100,13 @@ export default function Admin() {
       <ConfirmDialog
         open={!!toDelete}
         title="Excluir post?"
-        description={<span>Essa ação não poderá ser desfeita.<br />Deseja continuar?</span>}
+        description={
+          <span>
+            Essa ação não poderá ser desfeita.
+            <br />
+            Deseja continuar?
+          </span>
+        }
         confirmText="Excluir"
         cancelText="Cancelar"
         onCancel={() => setToDelete(null)}
@@ -106,4 +128,3 @@ export default function Admin() {
     </div>
   );
 }
-

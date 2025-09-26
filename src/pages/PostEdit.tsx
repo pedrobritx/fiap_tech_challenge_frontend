@@ -4,7 +4,8 @@ import { TextField } from '../components/ui/TextField';
 import { TextArea } from '../components/ui/TextArea';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
-import { postsService } from '../services/posts';
+import { BackButton } from '../components/ui/BackButton';
+import { postsService } from '../services/adaptivePosts';
 import type { Post } from '../services/apiClient';
 import { Loader } from '../components/ui/Loader';
 
@@ -56,19 +57,49 @@ export default function PostEdit() {
     }
   }
 
-  if (loading) return (<div style={{ display: 'grid', placeItems: 'center', padding: '2rem' }}><Loader size={28} /></div>);
-  if (error) return (<Card title="Erro"><p role="alert">{error}</p></Card>);
+  if (loading)
+    return (
+      <div style={{ display: 'grid', placeItems: 'center', padding: '2rem' }}>
+        <Loader size={28} />
+      </div>
+    );
+  if (error)
+    return (
+      <Card title="Erro">
+        <p role="alert">{error}</p>
+      </Card>
+    );
   if (!post) return null;
 
   return (
     <div className="container" style={{ maxWidth: 800 }}>
+      <BackButton to="/admin" />
       <Card title="Editar Post">
         <form onSubmit={onSubmit}>
-          <TextField label="Título" name="title" value={post.title} onChange={(e) => setPost({ ...post, title: e.target.value })} required />
+          <TextField
+            label="Título"
+            name="title"
+            value={post.title}
+            onChange={(e) => setPost({ ...post, title: e.target.value })}
+            required
+          />
           <TextField label="Autor" name="author" value={post.author} readOnly />
-          <TextArea label="Conteúdo (Markdown)" name="content" value={post.content} onChange={(e) => setPost({ ...post, content: e.target.value })} required rows={10} />
-          {error && <div role="alert" style={{ color: '#b91c1c', marginBottom: '0.5rem' }}>{error}</div>}
-          <Button type="submit" loading={saving}>Salvar</Button>
+          <TextArea
+            label="Conteúdo (Markdown)"
+            name="content"
+            value={post.content}
+            onChange={(e) => setPost({ ...post, content: e.target.value })}
+            required
+            rows={10}
+          />
+          {error && (
+            <div role="alert" style={{ color: '#b91c1c', marginBottom: '0.5rem' }}>
+              {error}
+            </div>
+          )}
+          <Button type="submit" loading={saving}>
+            Salvar
+          </Button>
         </form>
       </Card>
     </div>
