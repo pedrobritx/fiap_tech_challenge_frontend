@@ -1,234 +1,234 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EduPost - Teste de Autenticação</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .auth-option {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 15px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .auth-option:hover {
-            border-color: #007bff;
-            background: #e7f3ff;
-        }
-        .auth-option h3 {
-            margin: 0 0 10px 0;
-            color: #007bff;
-        }
-        .auth-option p {
-            margin: 0;
-            color: #666;
-            font-size: 14px;
-        }
-        .credentials {
-            background: #e8f5e8;
-            padding: 10px;
-            border-radius: 4px;
-            margin-top: 10px;
-            font-family: monospace;
-            font-size: 13px;
-        }
-        .status {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 6px;
-            display: none;
-        }
-        .status.success {
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
-        }
-        .status.error {
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-        }
-        .manual-setup {
-            border-top: 1px solid #eee;
-            margin-top: 30px;
-            padding-top: 20px;
-        }
-        .code-block {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 4px;
-            padding: 15px;
-            font-family: monospace;
-            font-size: 13px;
-            margin: 10px 0;
-            white-space: pre-wrap;
-        }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .auth-option {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 6px;
+        padding: 20px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .auth-option:hover {
+        border-color: #007bff;
+        background: #e7f3ff;
+      }
+      .auth-option h3 {
+        margin: 0 0 10px 0;
+        color: #007bff;
+      }
+      .auth-option p {
+        margin: 0;
+        color: #666;
+        font-size: 14px;
+      }
+      .credentials {
+        background: #e8f5e8;
+        padding: 10px;
+        border-radius: 4px;
+        margin-top: 10px;
+        font-family: monospace;
+        font-size: 13px;
+      }
+      .status {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 6px;
+        display: none;
+      }
+      .status.success {
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+      }
+      .status.error {
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+      }
+      .manual-setup {
+        border-top: 1px solid #eee;
+        margin-top: 30px;
+        padding-top: 20px;
+      }
+      .code-block {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 4px;
+        padding: 15px;
+        font-family: monospace;
+        font-size: 13px;
+        margin: 10px 0;
+        white-space: pre-wrap;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>🔐 EduPost - Teste de Autenticação</h1>
-        
-        <div class="auth-option" onclick="setAdminAuth()">
-            <h3>👨‍💼 Admin Padrão</h3>
-            <p>Configurar autenticação como administrador padrão</p>
-            <div class="credentials">
-                Email: admin@edupost.com<br>
-                Nome: Administrador<br>
-                Função: Admin
-            </div>
-        </div>
+      <h1>🔐 EduPost - Teste de Autenticação</h1>
 
-        <div class="auth-option" onclick="setProfessorAuth()">
-            <h3>👨‍🏫 Professor</h3>
-            <p>Configurar autenticação como professor</p>
-            <div class="credentials">
-                Email: professor@edupost.com<br>
-                Nome: Prof. João Silva<br>
-                Função: Professor
-            </div>
+      <div class="auth-option" onclick="setAdminAuth()">
+        <h3>👨‍💼 Admin Padrão</h3>
+        <p>Configurar autenticação como administrador padrão</p>
+        <div class="credentials">
+          Email: admin@edupost.com<br />
+          Nome: Administrador<br />
+          Função: Admin
         </div>
+      </div>
 
-        <div class="auth-option" onclick="setCustomAuth()">
-            <h3>⚙️ Personalizado</h3>
-            <p>Configurar credenciais personalizadas</p>
+      <div class="auth-option" onclick="setProfessorAuth()">
+        <h3>👨‍🏫 Professor</h3>
+        <p>Configurar autenticação como professor</p>
+        <div class="credentials">
+          Email: professor@edupost.com<br />
+          Nome: Prof. João Silva<br />
+          Função: Professor
         </div>
+      </div>
 
-        <div class="status" id="status"></div>
+      <div class="auth-option" onclick="setCustomAuth()">
+        <h3>⚙️ Personalizado</h3>
+        <p>Configurar credenciais personalizadas</p>
+      </div>
 
-        <div class="manual-setup">
-            <h3>🛠️ Configuração Manual (DevTools)</h3>
-            <p>Alternativa: abra o Console do navegador (F12) e execute:</p>
-            <div class="code-block" id="manualCode">// Clique em uma opção acima para ver o código</div>
-        </div>
+      <div class="status" id="status"></div>
+
+      <div class="manual-setup">
+        <h3>🛠️ Configuração Manual (DevTools)</h3>
+        <p>Alternativa: abra o Console do navegador (F12) e execute:</p>
+        <div class="code-block" id="manualCode">// Clique em uma opção acima para ver o código</div>
+      </div>
     </div>
 
     <script>
-        function showStatus(message, type = 'success') {
-            const status = document.getElementById('status');
-            status.textContent = message;
-            status.className = `status ${type}`;
-            status.style.display = 'block';
-            
-            if (type === 'success') {
-                setTimeout(() => {
-                    window.location.href = '/admin';
-                }, 2000);
-            }
-        }
+      function showStatus(message, type = 'success') {
+        const status = document.getElementById('status');
+        status.textContent = message;
+        status.className = `status ${type}`;
+        status.style.display = 'block';
 
-        function updateManualCode(tokenData, userData) {
-            const code = `// Configurar autenticação manualmente
+        if (type === 'success') {
+          setTimeout(() => {
+            window.location.href = '/admin';
+          }, 2000);
+        }
+      }
+
+      function updateManualCode(tokenData, userData) {
+        const code = `// Configurar autenticação manualmente
 localStorage.setItem('edupost_token', '${tokenData.token}');
 localStorage.setItem('edupost_user', '${JSON.stringify(userData)}');
 
 // Ir para admin
 window.location.href = '/admin';`;
-            
-            document.getElementById('manualCode').textContent = code;
-        }
 
-        function setAdminAuth() {
-            const tokenData = {
-                token: 'admin-token-' + Date.now(),
-                expiresAt: Date.now() + (24 * 60 * 60 * 1000) // 24 horas
-            };
-            
-            const userData = {
-                id: 'admin-001',
-                name: 'Administrador',
-                email: 'admin@edupost.com',
-                role: 'admin',
-                permissions: ['read', 'write', 'delete', 'admin']
-            };
+        document.getElementById('manualCode').textContent = code;
+      }
 
-            // Configurar localStorage
-            localStorage.setItem('edupost_token', tokenData.token);
-            localStorage.setItem('edupost_user', JSON.stringify(userData));
-            
-            updateManualCode(tokenData, userData);
-            showStatus('✅ Autenticação de Admin configurada! Redirecionando...');
-        }
+      function setAdminAuth() {
+        const tokenData = {
+          token: 'admin-token-' + Date.now(),
+          expiresAt: Date.now() + 24 * 60 * 60 * 1000, // 24 horas
+        };
 
-        function setProfessorAuth() {
-            const tokenData = {
-                token: 'professor-token-' + Date.now(),
-                expiresAt: Date.now() + (24 * 60 * 60 * 1000) // 24 horas
-            };
-            
-            const userData = {
-                id: 'prof-001',
-                name: 'Prof. João Silva',
-                email: 'professor@edupost.com',
-                role: 'professor',
-                permissions: ['read', 'write'],
-                department: 'Tecnologia'
-            };
+        const userData = {
+          id: 'admin-001',
+          name: 'Administrador',
+          email: 'admin@edupost.com',
+          role: 'admin',
+          permissions: ['read', 'write', 'delete', 'admin'],
+        };
 
-            // Configurar localStorage
-            localStorage.setItem('edupost_token', tokenData.token);
-            localStorage.setItem('edupost_user', JSON.stringify(userData));
-            
-            updateManualCode(tokenData, userData);
-            showStatus('✅ Autenticação de Professor configurada! Redirecionando...');
-        }
+        // Configurar localStorage
+        localStorage.setItem('edupost_token', tokenData.token);
+        localStorage.setItem('edupost_user', JSON.stringify(userData));
 
-        function setCustomAuth() {
-            const name = prompt('Nome do usuário:') || 'Usuário Teste';
-            const email = prompt('Email:') || 'usuario@edupost.com';
-            const role = prompt('Função (admin/professor/user):') || 'user';
-            
-            const tokenData = {
-                token: 'custom-token-' + Date.now(),
-                expiresAt: Date.now() + (24 * 60 * 60 * 1000) // 24 horas
-            };
-            
-            const userData = {
-                id: 'custom-' + Math.random().toString(36).substr(2, 9),
-                name: name,
-                email: email,
-                role: role,
-                permissions: role === 'admin' ? ['read', 'write', 'delete', 'admin'] : ['read', 'write']
-            };
+        updateManualCode(tokenData, userData);
+        showStatus('✅ Autenticação de Admin configurada! Redirecionando...');
+      }
 
-            // Configurar localStorage
-            localStorage.setItem('edupost_token', tokenData.token);
-            localStorage.setItem('edupost_user', JSON.stringify(userData));
-            
-            updateManualCode(tokenData, userData);
-            showStatus(`✅ Autenticação personalizada configurada para ${name}! Redirecionando...`);
-        }
+      function setProfessorAuth() {
+        const tokenData = {
+          token: 'professor-token-' + Date.now(),
+          expiresAt: Date.now() + 24 * 60 * 60 * 1000, // 24 horas
+        };
 
-        // Verificar se já está autenticado
-        window.addEventListener('load', function() {
-            const token = localStorage.getItem('edupost_token');
-            const user = localStorage.getItem('edupost_user');
-            
-            if (token && user) {
-                try {
-                    const userData = JSON.parse(user);
-                    document.getElementById('status').innerHTML = `
+        const userData = {
+          id: 'prof-001',
+          name: 'Prof. João Silva',
+          email: 'professor@edupost.com',
+          role: 'professor',
+          permissions: ['read', 'write'],
+          department: 'Tecnologia',
+        };
+
+        // Configurar localStorage
+        localStorage.setItem('edupost_token', tokenData.token);
+        localStorage.setItem('edupost_user', JSON.stringify(userData));
+
+        updateManualCode(tokenData, userData);
+        showStatus('✅ Autenticação de Professor configurada! Redirecionando...');
+      }
+
+      function setCustomAuth() {
+        const name = prompt('Nome do usuário:') || 'Usuário Teste';
+        const email = prompt('Email:') || 'usuario@edupost.com';
+        const role = prompt('Função (admin/professor/user):') || 'user';
+
+        const tokenData = {
+          token: 'custom-token-' + Date.now(),
+          expiresAt: Date.now() + 24 * 60 * 60 * 1000, // 24 horas
+        };
+
+        const userData = {
+          id: 'custom-' + Math.random().toString(36).substr(2, 9),
+          name: name,
+          email: email,
+          role: role,
+          permissions: role === 'admin' ? ['read', 'write', 'delete', 'admin'] : ['read', 'write'],
+        };
+
+        // Configurar localStorage
+        localStorage.setItem('edupost_token', tokenData.token);
+        localStorage.setItem('edupost_user', JSON.stringify(userData));
+
+        updateManualCode(tokenData, userData);
+        showStatus(`✅ Autenticação personalizada configurada para ${name}! Redirecionando...`);
+      }
+
+      // Verificar se já está autenticado
+      window.addEventListener('load', function () {
+        const token = localStorage.getItem('edupost_token');
+        const user = localStorage.getItem('edupost_user');
+
+        if (token && user) {
+          try {
+            const userData = JSON.parse(user);
+            document.getElementById('status').innerHTML = `
                         <strong>ℹ️ Já autenticado como:</strong><br>
                         Nome: ${userData.name}<br>
                         Email: ${userData.email}<br>
@@ -236,42 +236,42 @@ window.location.href = '/admin';`;
                         <button onclick="clearAuth()" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">Limpar Autenticação</button>
                         <button onclick="window.location.href='/admin'" style="background: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-left: 10px;">Ir para Admin</button>
                     `;
-                    document.getElementById('status').className = 'status';
-                    document.getElementById('status').style.display = 'block';
-                } catch (e) {
-                    console.warn('Erro ao ler dados do usuário:', e);
-                }
-            }
-        });
-
-        function clearAuth() {
-            localStorage.removeItem('edupost_token');
-            localStorage.removeItem('edupost_user');
-            showStatus('🗑️ Autenticação removida!', 'success');
-            setTimeout(() => {
-                location.reload();
-            }, 1000);
+            document.getElementById('status').className = 'status';
+            document.getElementById('status').style.display = 'block';
+          } catch (e) {
+            console.warn('Erro ao ler dados do usuário:', e);
+          }
         }
+      });
 
-        // Atalhos de teclado
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey || e.metaKey) {
-                switch(e.key) {
-                    case '1':
-                        e.preventDefault();
-                        setAdminAuth();
-                        break;
-                    case '2':
-                        e.preventDefault();
-                        setProfessorAuth();
-                        break;
-                    case '3':
-                        e.preventDefault();
-                        setCustomAuth();
-                        break;
-                }
-            }
-        });
+      function clearAuth() {
+        localStorage.removeItem('edupost_token');
+        localStorage.removeItem('edupost_user');
+        showStatus('🗑️ Autenticação removida!', 'success');
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      }
+
+      // Atalhos de teclado
+      document.addEventListener('keydown', function (e) {
+        if (e.ctrlKey || e.metaKey) {
+          switch (e.key) {
+            case '1':
+              e.preventDefault();
+              setAdminAuth();
+              break;
+            case '2':
+              e.preventDefault();
+              setProfessorAuth();
+              break;
+            case '3':
+              e.preventDefault();
+              setCustomAuth();
+              break;
+          }
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
