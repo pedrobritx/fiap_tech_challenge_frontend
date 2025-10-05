@@ -57,7 +57,7 @@ export default function PostCreate() {
           />
           <TextField label="Autor" name="author" value={author} readOnly />
           <TextArea
-            label="Conteúdo (Markdown)"
+            label="Conteúdo"
             name="content"
             value={content}
             onChange={(e) => setContent(e.target.value)}

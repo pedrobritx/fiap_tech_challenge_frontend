@@ -85,7 +85,7 @@ export default function PostEdit() {
           />
           <TextField label="Autor" name="author" value={post.author} readOnly />
           <TextArea
-            label="Conteúdo (Markdown)"
+            label="Conteúdo"
             name="content"
             value={post.content}
             onChange={(e) => setPost({ ...post, content: e.target.value })}
