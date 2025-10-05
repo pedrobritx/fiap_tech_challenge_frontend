@@ -55,6 +55,72 @@ export const mockPosts = [
     description:
       'Após desenvolver sua aplicação React, é importante saber como fazer o deploy. Vamos explorar diferentes opções...',
   },
+  {
+    id: '6',
+    title: 'Introdução ao GraphQL',
+    author: 'Prof. Lucas Almeida',
+    content:
+      'GraphQL é uma linguagem de consulta para APIs que permite obter exatamente os dados necessários. Neste post, vamos entender os conceitos básicos do GraphQL e como integrá-lo em aplicações React.\n\nVeremos como criar um servidor GraphQL simples e como consumir APIs GraphQL no frontend.',
+    createdAt: '2024-09-15T10:00:00Z',
+    updatedAt: '2024-09-15T10:00:00Z',
+    description:
+      'GraphQL é uma linguagem de consulta para APIs que permite obter exatamente os dados necessários...',
+  },
+  {
+    id: '7',
+    title: 'Boas Práticas em Desenvolvimento Frontend',
+    author: 'Prof. Ana Costa',
+    content:
+      'Neste post, vamos explorar algumas boas práticas para o desenvolvimento de aplicações frontend, incluindo organização de código, otimização de performance e acessibilidade.\n\nSeguir estas práticas pode ajudar a criar aplicações mais robustas e fáceis de manter.',
+    createdAt: '2024-09-14T10:00:00Z',
+    updatedAt: '2024-09-14T10:00:00Z',
+    description:
+      'Neste post, vamos explorar algumas boas práticas para o desenvolvimento de aplicações frontend...',
+  },
+  {
+    id: '8',
+    title: 'Usando Hooks Personalizados no React',
+    author: 'Prof. Ana Costa',
+    content:
+      'Hooks personalizados são uma maneira poderosa de reutilizar lógica em componentes React. Neste post, vamos aprender como criar e usar hooks personalizados para compartilhar lógica entre componentes.\n\nVeremos exemplos práticos e melhores práticas para a criação de hooks.',
+    createdAt: '2024-09-13T10:00:00Z',
+    updatedAt: '2024-09-13T10:00:00Z',
+    description:
+      'Hooks personalizados são uma maneira poderosa de reutilizar lógica em componentes React...',
+  },
+  {
+    id: '9',
+    title: 'Acessibilidade em Aplicações Web',
+    author: 'Prof. Ana Costa',
+    content:
+      'Acessibilidade é um aspecto crucial no desenvolvimento web. Neste post, vamos discutir como tornar aplicações web mais acessíveis, abordando técnicas e ferramentas que podem ser utilizadas para melhorar a experiência de usuários com deficiência.\n\nVeremos também como realizar testes de acessibilidade e garantir que todos os usuários tenham acesso ao conteúdo.',
+    createdAt: '2024-09-12T10:00:00Z',
+    updatedAt: '2024-09-12T10:00:00Z',
+    description:
+      'Acessibilidade é um aspecto crucial no desenvolvimento web. Neste post, vamos discutir como tornar aplicações web mais acessíveis...',
+  },
+  {
+    id: '10',
+    title: 'O Futuro do Desenvolvimento Web',
+    author: 'Prof. Maria Athayde',
+    content:
+      'Neste post, vamos explorar as tendências e o futuro do desenvolvimento web. Discutiremos tecnologias emergentes, como WebAssembly, JAMstack e a evolução dos frameworks frontend.\n\nPrepare-se para o futuro!',
+    createdAt: '2024-09-11T10:00:00Z',
+    updatedAt: '2024-09-11T10:00:00Z',
+    description:
+      'Neste post, vamos explorar as tendências e o futuro do desenvolvimento web...',
+  },
+  {
+    id: '11',
+    title: 'Introdução ao Next.js',
+    author: 'Prof. Gabriel Reinaldo',
+    content:
+      'Neste post, vamos explorar o Next.js, um framework React para construção de aplicações web. Veremos como configurar um projeto Next.js, criar páginas e utilizar recursos como SSR (Server-Side Rendering) e SSG (Static Site Generation).\n\nPrepare-se para levar suas aplicações React para o próximo nível!',
+    createdAt: '2024-09-10T10:00:00Z',
+    updatedAt: '2024-09-10T10:00:00Z',
+    description:
+      'Neste post, vamos explorar o Next.js, um framework React para construção de aplicações web...',
+  },
 ];
 
 export const mockUsers = [
