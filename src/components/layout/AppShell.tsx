@@ -11,7 +11,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <main className="container">
         {children}
         <footer className={styles.footer} aria-label="Rodapé">
-          <p>EduPost — aprendizagem em foco • {new Date().getFullYear()}</p>
+          <p>EduPost • {new Date().getFullYear()}</p>
           {state.user && <p>Logado como: {state.user.name} ({state.user.email})</p>}
         </footer>
       </main>
