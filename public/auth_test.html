@@ -120,7 +120,7 @@
       <div class="manual-setup">
         <h3>🛠️ Configuração Manual (DevTools)</h3>
         <p>Alternativa: abra o Console do navegador (F12) e execute:</p>
-        <div class="code-block" id="manualCode">// Clique em uma opção acima para ver o código</div>
+        <div class="code-block" id="manualCode">Clique em uma opção acima para ver o código</div>
       </div>
     </div>
 
@@ -152,7 +152,7 @@ window.location.href = '/admin';`;
       function setAdminAuth() {
         const tokenData = {
           token: 'admin-token-' + Date.now(),
-          expiresAt: Date.now() + 24 * 60 * 60 * 1000, // 24 horas
+          expiresAt: Date.now() + 24 * 60 * 60 * 1000,
         };
 
         const userData = {
@@ -163,7 +163,6 @@ window.location.href = '/admin';`;
           permissions: ['read', 'write', 'delete', 'admin'],
         };
 
-        // Configurar localStorage
         localStorage.setItem('edupost_token', tokenData.token);
         localStorage.setItem('edupost_user', JSON.stringify(userData));
 
@@ -174,7 +173,7 @@ window.location.href = '/admin';`;
       function setProfessorAuth() {
         const tokenData = {
           token: 'professor-token-' + Date.now(),
-          expiresAt: Date.now() + 24 * 60 * 60 * 1000, // 24 horas
+          expiresAt: Date.now() + 24 * 60 * 60 * 1000,
         };
 
         const userData = {
@@ -200,7 +199,7 @@ window.location.href = '/admin';`;
 
         const tokenData = {
           token: 'custom-token-' + Date.now(),
-          expiresAt: Date.now() + 24 * 60 * 60 * 1000, // 24 horas
+          expiresAt: Date.now() + 24 * 60 * 60 * 1000,
         };
 
         const userData = {

@@ -20,7 +20,6 @@ export function BackButton({
     if (to) {
       navigate(to);
     } else {
-      // Use browser's back history if available, otherwise go to home
       if (window.history.length > 1) {
         navigate(-1);
       } else {
