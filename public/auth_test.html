@@ -186,7 +186,6 @@ window.location.href = '/admin';`;
           department: 'Tecnologia',
         };
 
-        // Configurar localStorage
         localStorage.setItem('edupost_token', tokenData.token);
         localStorage.setItem('edupost_user', JSON.stringify(userData));
 
@@ -251,7 +250,6 @@ window.location.href = '/admin';`;
         }, 1000);
       }
 
-      // Atalhos de teclado
       document.addEventListener('keydown', function (e) {
         if (e.ctrlKey || e.metaKey) {
           switch (e.key) {
