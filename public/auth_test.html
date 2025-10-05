@@ -212,7 +212,6 @@ window.location.href = '/admin';`;
           permissions: role === 'admin' ? ['read', 'write', 'delete', 'admin'] : ['read', 'write'],
         };
 
-        // Configurar localStorage
         localStorage.setItem('edupost_token', tokenData.token);
         localStorage.setItem('edupost_user', JSON.stringify(userData));
 
@@ -220,7 +219,6 @@ window.location.href = '/admin';`;
         showStatus(`✅ Autenticação personalizada configurada para ${name}! Redirecionando...`);
       }
 
-      // Verificar se já está autenticado
       window.addEventListener('load', function () {
         const token = localStorage.getItem('edupost_token');
         const user = localStorage.getItem('edupost_user');
